@@ -16,8 +16,9 @@ public class StudentController {
 
     private Car myCar;
 
-    StudentController(Coach coach){
+    StudentController(Coach coach,Car car){
         this.myCoach = coach;
+        this.myCar = car;
     }
 
     @GetMapping("/hello")
