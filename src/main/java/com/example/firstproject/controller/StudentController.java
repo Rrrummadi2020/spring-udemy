@@ -17,7 +17,7 @@ public class StudentController {
 
     private Car myCar;
 
-    StudentController(@Qualifier("trackCoach") Coach coach, Car car){
+    StudentController(Coach coach, Car car){
         this.myCoach = coach;
         this.myCar = car;
     }
