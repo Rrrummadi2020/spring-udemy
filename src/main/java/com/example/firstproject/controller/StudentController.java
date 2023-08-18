@@ -3,6 +3,7 @@ package com.example.firstproject.controller;
 import com.example.firstproject.service.Car;
 import com.example.firstproject.service.Coach;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -16,7 +17,7 @@ public class StudentController {
 
     private Car myCar;
 
-    StudentController(Coach coach,Car car){
+    StudentController(@Qualifier("trackCoach") Coach coach, Car car){
         this.myCoach = coach;
         this.myCar = car;
     }
