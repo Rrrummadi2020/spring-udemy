@@ -7,6 +7,10 @@ import org.springframework.stereotype.Component;
 @Component
 @Primary
 public class BaseballCoach implements Coach {
+    public BaseballCoach(){
+        System.out.println("In class "+ getClass().getName());
+        System.out.println("if use @Lazy annotation in logs the above line will not appear");
+    }
     @Override
     public String getDailyWorkout() {
         return "@qualifier annotation has more precedence compare to @Primary";
