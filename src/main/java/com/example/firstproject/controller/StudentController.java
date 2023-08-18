@@ -18,7 +18,7 @@ public class StudentController {
 
     private Car myCar;
 
-    StudentController(@Qualifier("trackCoach") Coach coach,@Qualifier("trackCoach") Coach theCoach, Car car){
+    StudentController(@Qualifier("cricketCoach") Coach coach,@Qualifier("cricketCoach") Coach theCoach, Car car){
         this.myCoach = coach;
         this.myCar = car;
         this.theCoach = theCoach;
@@ -42,6 +42,6 @@ public class StudentController {
 
     @GetMapping("/singleton")
     public String singletonExample(){
-        return "sigleton class will always have one instance throught the application "+(theCoach==myCoach);
+        return "prototype class will always have different instance for every request "+(theCoach==myCoach);
     }
 }
