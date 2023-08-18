@@ -1,11 +1,14 @@
 package com.example.firstproject.service.impl;
 
 import com.example.firstproject.service.Coach;
+import org.springframework.beans.factory.config.ConfigurableBeanFactory;
 import org.springframework.context.annotation.Lazy;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 @Component
 @Lazy
+@Scope(value = ConfigurableBeanFactory.SCOPE_SINGLETON)
 public class TrackCoach implements Coach {
     //with the above annotation place constructor  logs will not appear untill explicity asked from the app context
     public TrackCoach(){
