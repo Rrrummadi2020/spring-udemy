@@ -29,8 +29,10 @@ public class FirstprojectApplication {
 		return runner -> {
 			System.out.println("Server started in POST 8081 ... " + port+" At: "+java.time.LocalTime.now());
 //			createStudent();
-			findStudent(2);
-			findByName("rama");
+//			findStudent(2);
+//			findByName("rama");
+//			updateStudent();
+			deleteStudent();
 		};
 	}
 
@@ -51,5 +53,18 @@ public class FirstprojectApplication {
 		for (int i = 0; i < slist.size(); i++) {
 			System.out.println(slist.get(i));
 		}
+	}
+
+	public void updateStudent() {
+		Student tempStudent = studentDAO.findById(1);
+		tempStudent.setFirstName("chethan");
+		studentDAO.updateStudent(tempStudent);
+		System.out.println("updated student with id : " + tempStudent);
+	}
+
+	public void deleteStudent() {
+		System.out.println("deleting id : ");
+		studentDAO.delete(2);
+		System.out.println("deleted student with id : ");
 	}
 }
