@@ -10,8 +10,9 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
-@CrossOrigin(origins = "http://localhost:4200")
+//@CrossOrigin(origins = "http://localhost:4200")//two ways to cross origin error handling
 @RestController
+@RequestMapping("/api")
 public class StudentController {
     @Value("${coach.name}")
     private String name;
