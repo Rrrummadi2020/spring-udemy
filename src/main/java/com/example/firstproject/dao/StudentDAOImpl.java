@@ -5,7 +5,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
+import javax.persistence.TypedQuery;
 import javax.transaction.Transactional;
+import java.util.List;
 
 @Repository
 public class StudentDAOImpl implements StudentDAO {
@@ -28,5 +30,13 @@ public class StudentDAOImpl implements StudentDAO {
     @Override
     public Student findById(Integer id){
         return entityManager.find(Student.class,id);
+    }
+
+    @Override
+    public List<Student> findByLastName(String lastName) {
+//        TypedQuery<Student> query = entityManager.createQuery("FROM Student WHERE firstName='rama'", Student.class);
+        TypedQuery<Student> query = entityManager.createQuery("FROM Student WHERE firstName=:theName", Student.class);
+        query.setParameter("theName", lastName);
+        return query.getResultList();
     }
 }

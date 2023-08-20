@@ -66,4 +66,5 @@ public class Student {
                 ", email='" + email + '\'' +
                 '}';
     }
+    //for dao getters setters constructor with args without args tostring method are mandatory
 }

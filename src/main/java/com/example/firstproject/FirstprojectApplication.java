@@ -9,6 +9,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
+import java.util.List;
+
 @SpringBootApplication(scanBasePackages = {"com.example.firstproject", "com.outside.service.impl"})
 public class FirstprojectApplication {
 
@@ -28,6 +30,7 @@ public class FirstprojectApplication {
 			System.out.println("Server started in POST 8081 ... " + port+" At: "+java.time.LocalTime.now());
 //			createStudent();
 			findStudent(2);
+			findByName("rama");
 		};
 	}
 
@@ -41,5 +44,12 @@ public class FirstprojectApplication {
 
 	public void findStudent(Integer id) {
 		System.out.println(studentDAO.findById(id));
+	}
+
+	public void findByName(String name) {
+		List<Student> slist = studentDAO.findByLastName(name);
+		for (int i = 0; i < slist.size(); i++) {
+			System.out.println(slist.get(i));
+		}
 	}
 }
