@@ -2,7 +2,6 @@ package com.example.firstproject.controller;
 
 import com.example.firstproject.dao.StudentDAO;
 import com.example.firstproject.entity.Student;
-import com.example.firstproject.exception.StudentError;
 import com.example.firstproject.exception.StudentNotFound;
 import com.example.firstproject.service.Car;
 import com.example.firstproject.service.Coach;
@@ -11,9 +10,7 @@ import com.example.firstproject.service.impl.SwimCoach;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.PostConstruct;
@@ -95,14 +92,6 @@ public class StudentController {
              throw new StudentNotFound("Student not found");
         }
         return theStudents.get(studentId);
-    }
-
-    @ExceptionHandler
-    public ResponseEntity<StudentError> handleStudentNot(StudentNotFound studentNotFound) {
-        StudentError error = new StudentError();
-        error.setMessage("student not foud");
-        error.setStatusCode(studentNotFound.getMessage());
-        return new ResponseEntity<>(error, HttpStatus.NOT_FOUND);
     }
 
 
