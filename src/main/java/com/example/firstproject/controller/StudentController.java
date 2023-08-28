@@ -7,13 +7,13 @@ import com.example.firstproject.service.Car;
 import com.example.firstproject.service.Coach;
 import com.example.firstproject.service.WeatherService;
 import com.example.firstproject.service.impl.SwimCoach;
+import jakarta.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
-import javax.annotation.PostConstruct;
 import java.util.ArrayList;
 import java.util.List;
 

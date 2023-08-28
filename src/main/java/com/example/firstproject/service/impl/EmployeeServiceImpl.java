@@ -3,10 +3,10 @@ package com.example.firstproject.service.impl;
 import com.example.firstproject.dao.EmployeeDAO;
 import com.example.firstproject.entity.Employee;
 import com.example.firstproject.service.EmployeeService;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.transaction.Transactional;
 import java.util.List;
 
 @Service

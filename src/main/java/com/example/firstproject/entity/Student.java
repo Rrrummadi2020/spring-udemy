@@ -1,7 +1,6 @@
 package com.example.firstproject.entity;
 
-import javax.persistence.*;
-
+import jakarta.persistence.*;
 @Entity
 @Table(name = "student")
 public class Student {

@@ -1,11 +1,11 @@
 package com.example.firstproject.dao;
 
 import com.example.firstproject.entity.Employee;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.TypedQuery;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import javax.persistence.EntityManager;
-import javax.persistence.TypedQuery;
 import java.util.List;
 
 @Repository

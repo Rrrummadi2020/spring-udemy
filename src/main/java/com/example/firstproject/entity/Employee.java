@@ -1,8 +1,8 @@
 package com.example.firstproject.entity;
 
-import javax.persistence.*;
-import java.util.Objects;
 
+import java.util.Objects;
+import jakarta.persistence.*;
 @Entity
 @Table(name = "employee")
 public class Employee {
