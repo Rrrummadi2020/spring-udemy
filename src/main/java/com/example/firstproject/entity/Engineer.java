@@ -19,7 +19,7 @@ public class Engineer {
     private String position;
 
     @Column(name = "start_date")
-    private Date startDate;
+    private Date startDate;//yyyy-mm-dd formate
 
     public Integer getId() {
         return id;

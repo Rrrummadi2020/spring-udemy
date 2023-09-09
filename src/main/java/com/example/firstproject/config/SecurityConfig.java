@@ -1,5 +1,7 @@
 package com.example.firstproject.config;
 
+import javax.sql.DataSource;
+
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
@@ -8,18 +10,19 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
+import org.springframework.security.provisioning.JdbcUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
 
 @Configuration
 public class SecurityConfig {
-    @Bean
+  /*   @Bean
     public InMemoryUserDetailsManager settingInMemoryUsers(){
         UserDetails nenu = User.builder().username("rama").password("{noop}testram").roles("EMPLOYEE").build();
         UserDetails akka = User.builder().username("renuka").password("{noop}testren").roles("EMPLOYEE","MANAGER").build();
         UserDetails amma = User.builder().username("rajeshwari").password("{noop}testraj").roles("EMPLOYEE","MANAGER","ADMIN").build();
 
         return new InMemoryUserDetailsManager(nenu,akka,amma);
-    }
+    } */
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity httpSecurity) throws Exception {
@@ -33,5 +36,10 @@ public class SecurityConfig {
         httpSecurity.csrf(csrf->csrf.disable());//for POST , PUT, DELETE requests necessary
         return httpSecurity.build();
 
+    }
+    
+    @Bean
+    public JdbcUserDetailsManager userDetailsManager(DataSource dataSource){
+        return new JdbcUserDetailsManager(dataSource);
     }
 }
