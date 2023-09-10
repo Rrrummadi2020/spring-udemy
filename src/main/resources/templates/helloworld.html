@@ -2,11 +2,20 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Document</title>
+    <link rel="stylesheet" th:href="@{/css/basicstyles.css}">
 </head>
 <body>
     <!-- <p th:text="'Hello world'"></p> -->
-    <p>Thyleaf template will only work with the @Controller annotation </p>
+    <p>THYMELEAF NOTES</p>
+    <p class="flower">Thyleaf template will only work with the @Controller annotation </p>
     <p th:text="'the current Date and time is '+${todayDate}" />
+    <p>Path we should declare as  @ symbol and variable will declare with $ symbol during template expression </p>
+    <h6>Form Submission</h6>
+    <form th:action="@{/process}" th:object="${customer}" method="POST">
+        Last Name: <input type="text" th:field="*{lastName}">
+        First Name: <input type="text" th:field="*{firstName}">
+        <button type="submit">Submit</button>
+    </form>
 </body>
 
 </html>
