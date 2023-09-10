@@ -32,3 +32,26 @@ insert into users values('rama','{noop}testram',1),('renuka','{noop}testren',1),
 
 insert into authorities values('rama','ROLE_EMPLOYEE'),('renuka','ROLE_MANAGER'),('rajeshwari','ROLE_ADMIN');
 
+-- custom table authority
+create table members(
+	user_id varchar(40) not null,
+    pw varchar(68) not null,
+    primary key(user_id)
+);
+
+alter table members add column active tinyint not null;
+
+create table roles (
+		user_id varchar(40) not null,
+        role varchar(40) not null,
+        constraint username_k1 unique(user_id,role),
+        foreign key (user_id) references members(user_id)
+    );
+
+insert into members values('mememployee','{noop}testemp',1),('memmanager','{noop}testman',1),('memadmin','{noop}testadm',1);
+
+insert into roles values('mememployee','ROLE_EMPLOYEE'),('memmanager','ROLE_MANAGER'),('memadmin','ROLE_ADMIN');
+
+SELECT user_id, pw,active FROM members WHERE user_id='memadmin';
+
+SELECT user_id,role FROM roles WHERE user_id='memadmin';
