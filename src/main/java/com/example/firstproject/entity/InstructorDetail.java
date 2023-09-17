@@ -23,8 +23,9 @@ public class InstructorDetail {
     @Column(name = "hobbies")
     private String hobbies;
 
-    @OneToOne(mappedBy = "instructorDetail",cascade = CascadeType.ALL)
-    private Instructor instructor;//biderection retriving the associated instuctor for this instructor detail
+    @OneToOne(mappedBy = "instructorDetail", cascade = { CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST,
+            CascadeType.REFRESH })
+    private Instructor instructor;// biderection retriving the associated instuctor for this instructor detail
 
     public InstructorDetail() {
     }

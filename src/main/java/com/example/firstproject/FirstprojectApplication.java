@@ -114,7 +114,7 @@ public class FirstprojectApplication {
 	}
 	public void deleteInstructorDetail(){
 		System.out.println("deleting the instructor detail ....");
-		instructorDAO.deleteInstructorDetail(3);
+		instructorDAO.deleteInstructorDetail(4);
 		System.out.println("dleelted successfully ....");
 
 	}
