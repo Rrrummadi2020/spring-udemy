@@ -43,8 +43,10 @@ public class FirstprojectApplication {
 //			findByName("rama");
 //			updateStudent();
 //			deleteStudent();
-//			createInstructorDetailsALongWithInstructor();
-			deleteInstructor();
+			// createInstructorDetailsALongWithInstructor();
+			// deleteInstructor();
+			// findInstructorDetails();
+			deleteInstructorDetail();
 
 		};
 	}
@@ -90,8 +92,8 @@ public class FirstprojectApplication {
 	}
 	
 	public void createInstructorDetailsALongWithInstructor() {
-		Instructor tempInstructor = new Instructor("Maxmillian", "maximilian@gmail.com");
-		InstructorDetail instructorDetail = new InstructorDetail("maximilian@youtube.com", "Reading A Documentaitln");
+		Instructor tempInstructor = new Instructor("Jonas Schedmntan", "jonasschemetan@gmail.com");
+		InstructorDetail instructorDetail = new InstructorDetail("jonas@youtube.com", "Javascript Music tuner ");
 		tempInstructor.setInstructorDetail(instructorDetail);
 		System.out.println("saving Insturctors...");
 		instructorDAO.save(tempInstructor);
@@ -103,5 +105,17 @@ public class FirstprojectApplication {
 		Integer instructorId = new Integer(1);
 		instructorDAO.delete(instructorId);
 		System.out.println("deleted student with id : 1");
+	}
+
+	public void findInstructorDetails(){
+		 InstructorDetail instructorDetail =  instructorDAO.findInstructorDetail(3);
+		 System.out.println(instructorDetail);
+		 System.out.println(instructorDetail.getInstructor());
+	}
+	public void deleteInstructorDetail(){
+		System.out.println("deleting the instructor detail ....");
+		instructorDAO.deleteInstructorDetail(3);
+		System.out.println("dleelted successfully ....");
+
 	}
 }
