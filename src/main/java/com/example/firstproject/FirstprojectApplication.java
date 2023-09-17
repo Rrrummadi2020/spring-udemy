@@ -1,7 +1,12 @@
 package com.example.firstproject;
 
+import com.example.firstproject.dao.InstructorDAO;
 import com.example.firstproject.dao.StudentDAO;
+import com.example.firstproject.entity.Instructor;
+import com.example.firstproject.entity.InstructorDetail;
 import com.example.firstproject.entity.Student;
+
+import org.aspectj.apache.bcel.generic.Instruction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.CommandLineRunner;
@@ -22,6 +27,9 @@ public class FirstprojectApplication {
 	@Autowired
 	private StudentDAO studentDAO;
 
+	@Autowired
+	private InstructorDAO instructorDAO;
+
 	public static void main(String[] args) {
 		SpringApplication.run(FirstprojectApplication.class, args);
 	}
@@ -35,6 +43,9 @@ public class FirstprojectApplication {
 //			findByName("rama");
 //			updateStudent();
 //			deleteStudent();
+//			createInstructorDetailsALongWithInstructor();
+			deleteInstructor();
+
 		};
 	}
 	@Bean
@@ -76,5 +87,21 @@ public class FirstprojectApplication {
 		System.out.println("deleting id : ");
 		studentDAO.delete(2);
 		System.out.println("deleted student with id : ");
+	}
+	
+	public void createInstructorDetailsALongWithInstructor() {
+		Instructor tempInstructor = new Instructor("Maxmillian", "maximilian@gmail.com");
+		InstructorDetail instructorDetail = new InstructorDetail("maximilian@youtube.com", "Reading A Documentaitln");
+		tempInstructor.setInstructorDetail(instructorDetail);
+		System.out.println("saving Insturctors...");
+		instructorDAO.save(tempInstructor);
+		System.out.println("done saving");
+	}
+	
+	public void deleteInstructor() {
+		System.out.println("deleting id : ");
+		Integer instructorId = new Integer(1);
+		instructorDAO.delete(instructorId);
+		System.out.println("deleted student with id : 1");
 	}
 }
