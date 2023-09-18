@@ -56,6 +56,8 @@ public class FirstprojectApplication {
 		Instructor instructor = instructorDAO.findInstructorsByJoinFetch(9);
 		System.out.println("data fetch completed & showing the courses");
 		System.out.println(instructor.getCourses());
+		System.out.println("getting instructors");
+		System.out.println(instructor.getInstructorDetail());
 		System.out.println("done....");
 	}
 
