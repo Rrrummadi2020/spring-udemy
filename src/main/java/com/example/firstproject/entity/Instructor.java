@@ -5,6 +5,11 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Column;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToMany;
+
+import java.util.ArrayList;
+import java.util.List;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Table;
 import jakarta.persistence.Entity;
@@ -27,6 +32,9 @@ public class Instructor {
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "instructor_detail_id")
     private InstructorDetail instructorDetail;
+
+    @OneToMany(mappedBy = "instructor", cascade = { CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH, CascadeType.PERSIST })
+    private List<Course> courses;
 
     public Instructor(String name, String email) {
         this.name = name;
@@ -115,6 +123,22 @@ public class Instructor {
         } else if (!instructorDetail.equals(other.instructorDetail))
             return false;
         return true;
+    }
+
+    public List<Course> getCourses() {
+        return courses;
+    }
+
+    public void setCourses(List<Course> courses) {
+        this.courses = courses;
+    }
+
+    public void addCourse(Course course) {
+        if (this.courses == null) {
+            this.courses = new ArrayList<Course>();
+        }
+        course.setInstructor(this);
+        this.courses.add(course);
     }
 
 }

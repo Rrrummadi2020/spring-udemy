@@ -2,6 +2,7 @@ package com.example.firstproject;
 
 import com.example.firstproject.dao.InstructorDAO;
 import com.example.firstproject.dao.StudentDAO;
+import com.example.firstproject.entity.Course;
 import com.example.firstproject.entity.Instructor;
 import com.example.firstproject.entity.InstructorDetail;
 import com.example.firstproject.entity.Student;
@@ -16,6 +17,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @SpringBootApplication(scanBasePackages = {"com.example.firstproject", "com.outside.service.impl"})
@@ -43,10 +45,10 @@ public class FirstprojectApplication {
 //			findByName("rama");
 //			updateStudent();
 //			deleteStudent();
-			// createInstructorDetailsALongWithInstructor();
+			createInstructorDetailsALongWithInstructor();
 			// deleteInstructor();
 			// findInstructorDetails();
-			deleteInstructorDetail();
+			// deleteInstructorDetail();
 
 		};
 	}
@@ -95,6 +97,10 @@ public class FirstprojectApplication {
 		Instructor tempInstructor = new Instructor("Jonas Schedmntan", "jonasschemetan@gmail.com");
 		InstructorDetail instructorDetail = new InstructorDetail("jonas@youtube.com", "Javascript Music tuner ");
 		tempInstructor.setInstructorDetail(instructorDetail);
+		tempInstructor.addCourse(new Course("React complete course", "Basic and adbanced concepts in "));
+		tempInstructor
+				.addCourse(new Course("Microservices Architecture with Java  Spring ", "Along withh the Docker hib"));
+		System.out.println("saving Courses...");
 		System.out.println("saving Insturctors...");
 		instructorDAO.save(tempInstructor);
 		System.out.println("done saving");
