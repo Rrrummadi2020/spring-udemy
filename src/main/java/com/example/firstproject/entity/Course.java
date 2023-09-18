@@ -114,4 +114,7 @@ public class Course {
         return true;
     }
 
+    public Course() {
+    }
+
 }

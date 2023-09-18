@@ -45,10 +45,11 @@ public class FirstprojectApplication {
 //			findByName("rama");
 //			updateStudent();
 //			deleteStudent();
-			createInstructorDetailsALongWithInstructor();
+			// createInstructorDetailsALongWithInstructor();
 			// deleteInstructor();
 			// findInstructorDetails();
 			// deleteInstructorDetail();
+			findInstructor();
 
 		};
 	}
@@ -123,5 +124,13 @@ public class FirstprojectApplication {
 		instructorDAO.deleteInstructorDetail(4);
 		System.out.println("dleelted successfully ....");
 
+	}
+	
+	public void findInstructor() {
+		Instructor instructor = instructorDAO.find(9);
+		System.out.println("courses lised in the below");
+		System.out.println(instructor.getCourses());
+System.out.println("instructore fourded");
+		System.out.println(instructor.getInstructorDetail());
 	}
 }
