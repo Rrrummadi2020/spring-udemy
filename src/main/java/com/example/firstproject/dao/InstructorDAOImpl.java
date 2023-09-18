@@ -67,4 +67,9 @@ public class InstructorDAOImpl implements InstructorDAO {
         Instructor instructor = query.getSingleResult();
         return instructor;
     }
+    @Override
+    @Transactional
+    public void updateInstructor(Instructor instructor){
+        entityManager.merge(instructor);
+    }
 }

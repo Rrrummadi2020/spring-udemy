@@ -48,7 +48,8 @@ public class FirstprojectApplication {
 			// findInstructorDetails();
 			// deleteInstructorDetail();
 			// findInstructor();
-			findInstructorWithJoinFetch();
+			// findInstructorWithJoinFetch();
+			updateInstructorExisting();
 		};
 	}
 	
@@ -143,6 +144,14 @@ public class FirstprojectApplication {
 		System.out.println(instructor.getCourses());//this line will throw an error
 		System.out.println("instructore founded");
 		System.out.println(instructor.getInstructorDetail());
+	}
+	public void updateInstructorExisting(){
+		Instructor instructor =  instructorDAO.find(9);
+		instructor.setName("Renuka Krishna kourshik");
+		System.out.println("updateing ....");
+		instructorDAO.updateInstructor(instructor);
+		System.out.println("done.....");
+
 	}
 
 }
