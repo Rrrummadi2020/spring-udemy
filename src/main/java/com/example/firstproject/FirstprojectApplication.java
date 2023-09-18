@@ -1,13 +1,7 @@
 package com.example.firstproject;
 
-import com.example.firstproject.dao.InstructorDAO;
-import com.example.firstproject.dao.StudentDAO;
-import com.example.firstproject.entity.Course;
-import com.example.firstproject.entity.Instructor;
-import com.example.firstproject.entity.InstructorDetail;
-import com.example.firstproject.entity.Student;
+import java.util.List;
 
-import org.aspectj.apache.bcel.generic.Instruction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.CommandLineRunner;
@@ -17,8 +11,12 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
-import java.util.ArrayList;
-import java.util.List;
+import com.example.firstproject.dao.InstructorDAO;
+import com.example.firstproject.dao.StudentDAO;
+import com.example.firstproject.entity.Course;
+import com.example.firstproject.entity.Instructor;
+import com.example.firstproject.entity.InstructorDetail;
+import com.example.firstproject.entity.Student;
 
 @SpringBootApplication(scanBasePackages = {"com.example.firstproject", "com.outside.service.impl"})
 public class FirstprojectApplication {
@@ -49,10 +47,18 @@ public class FirstprojectApplication {
 			// deleteInstructor();
 			// findInstructorDetails();
 			// deleteInstructorDetail();
-			findInstructor();
-
+			// findInstructor();
+			findInstructorWithJoinFetch();
 		};
 	}
+	
+	private void findInstructorWithJoinFetch() {
+		Instructor instructor = instructorDAO.findInstructorsByJoinFetch(9);
+		System.out.println("data fetch completed & showing the courses");
+		System.out.println(instructor.getCourses());
+		System.out.println("done....");
+	}
+
 	@Bean
 	public WebMvcConfigurer corsConfigurer(){
 		return new WebMvcConfigurer() {
@@ -129,8 +135,12 @@ public class FirstprojectApplication {
 	public void findInstructor() {
 		Instructor instructor = instructorDAO.find(9);
 		System.out.println("courses lised in the below");
-		System.out.println(instructor.getCourses());
-System.out.println("instructore fourded");
+		List<Course> courses =  instructorDAO.findCoursesByInstructorId(9);
+		instructor.setCourses(courses);
+		System.out.println("fourded courses in the below");
+		System.out.println(instructor.getCourses());//this line will throw an error
+		System.out.println("instructore founded");
 		System.out.println(instructor.getInstructorDetail());
 	}
+
 }
