@@ -29,7 +29,11 @@ public class InstructorDAOImpl implements InstructorDAO {
     @Transactional
     public void delete(Integer id) {
         // TODO Auto-generated method stub
-        Instructor instructor2 = entityManager.find(Instructor.class, 1);
+        Instructor instructor2 = entityManager.find(Instructor.class, id);
+        List<Course> courses =  instructor2.getCourses();
+        for (Course course : courses) {
+            course.setInstructor(null);
+        }
         entityManager.remove(instructor2);
     }
 

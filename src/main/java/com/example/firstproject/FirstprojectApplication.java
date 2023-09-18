@@ -42,14 +42,14 @@ public class FirstprojectApplication {
 //			findStudent(2);
 //			findByName("rama");
 //			updateStudent();
-//			deleteStudent();
+			// deleteStudent();
 			// createInstructorDetailsALongWithInstructor();
-			// deleteInstructor();
+			deleteInstructor();
 			// findInstructorDetails();
 			// deleteInstructorDetail();
 			// findInstructor();
 			// findInstructorWithJoinFetch();
-			updateInstructorExisting();
+			// updateInstructorExisting();
 		};
 	}
 	
@@ -118,7 +118,7 @@ public class FirstprojectApplication {
 	
 	public void deleteInstructor() {
 		System.out.println("deleting id : ");
-		Integer instructorId = new Integer(1);
+		Integer instructorId = new Integer(9);
 		instructorDAO.delete(instructorId);
 		System.out.println("deleted student with id : 1");
 	}
