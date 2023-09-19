@@ -1,5 +1,8 @@
 package com.example.firstproject.entity;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import jakarta.persistence.*;
 @Entity
 @Table(name = "student")
@@ -17,6 +20,25 @@ public class Student {
 
     @Column(name = "email")
     private String email;
+
+    @ManyToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH })
+    @JoinTable(name = "course_student", joinColumns = @JoinColumn(name = "student_id"), inverseJoinColumns = @JoinColumn(name = "course_id"))
+    private List<Course> courses;
+
+    public void addCourse(Course course) {
+        if (this.courses == null) {
+            this.courses = new ArrayList<>();
+        }
+        this.courses.add(course);
+    }
+
+    public List<Course> getCourses() {
+        return courses;
+    }
+
+    public void setCourses(List<Course> courses) {
+        this.courses = courses;
+    }
 
     public Integer getId() {
         return id;

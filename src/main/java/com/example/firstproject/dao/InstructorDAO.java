@@ -5,6 +5,7 @@ import java.util.List;
 import com.example.firstproject.entity.Course;
 import com.example.firstproject.entity.Instructor;
 import com.example.firstproject.entity.InstructorDetail;
+import com.example.firstproject.entity.Student;
 
 public interface InstructorDAO {
     void save(Instructor instructor);
@@ -19,4 +20,6 @@ public interface InstructorDAO {
      Course findOneCourse(Integer id);
      void deleteCourse(Integer id);
      Course findCourse(Integer id);
+     Course findCourseWithStudents(Integer id);
+     Student findStudentWithCourses(Integer id);
 }

@@ -39,7 +39,9 @@ public class FirstprojectApplication {
 	public CommandLineRunner commandLineRunner(String[] args) {
 		return runner -> {
 			System.out.println("Server started in POST 8081 ... " + port+" At: "+java.time.LocalTime.now());
-//			createStudent();
+			// findCourseWithStudents();
+			findStudentWithCourses();
+			//			createStudent();
 //			findStudent(2);
 //			findByName("rama");
 //			updateStudent();
@@ -53,10 +55,28 @@ public class FirstprojectApplication {
 			// updateInstructorExisting();
 			// updateCourse();
 			// deleteCourse();
-			findCourse();
+			// findCourse();
 		};
 	}
 	
+	private void findCourseWithStudents() {
+		Course course =  instructorDAO.findCourseWithStudents(11);
+		System.out.println("following are the course data alone............ ");
+		System.out.println(course);
+		System.out.println("following are the students of the particular course......");
+		System.out.println(course.getStudents());
+		System.out.println("done fetching the course wth list of studets............ ");
+	}
+	
+	private void findStudentWithCourses() {
+		Student student = instructorDAO.findStudentWithCourses(7);
+		System.out.println("following are the student data alone............ ");
+		System.out.println(student);
+		System.out.println("following are the courses of the particular Student......");
+		System.out.println(student.getCourses());
+		System.out.println("done fetching the student  wth list of courses............ ");
+	}
+
 	private void findInstructorWithJoinFetch() {
 		Instructor instructor = instructorDAO.findInstructorsByJoinFetch(9);
 		System.out.println("data fetch completed & showing the courses");
@@ -158,11 +178,15 @@ public class FirstprojectApplication {
 	}
 
 	public void updateCourse() {
-		Course course = new Course("Angular the complete Guide", "Microservices with docker kubernates");
-		Review review = new Review("good ");
-		Review review2 = new Review("Bad");
+		Course course = new Course("Date Stuructures and algorithms", "sANDEEP jAIN gfgs");
+		Review review = new Review("eXCELLENET ");
+		Review review2 = new Review("very excellent");
 		course.addReview(review);
 		course.addReview(review2);
+		Student studentOne = new Student("Mani","Kanta","manikanta@gmail.com");
+		Student studentTwo = new Student("Neela","React","neela@gmail.com");
+		course.addStudent(studentOne);
+		course.addStudent(studentTwo);
 		instructorDAO.saveCourse(course);
 	}
 
@@ -173,8 +197,9 @@ public class FirstprojectApplication {
 
 	public void findCourse() {
 		System.out.println("fetching the courses and their review due to cascade ");
-	Course course =  instructorDAO.findCourse(5);
-	System.out.println(course.getReviews());
+		Course course = instructorDAO.findCourse(5);
+		System.out.println(course.getReviews());
 
 	}
+
 }

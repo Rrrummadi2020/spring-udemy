@@ -32,3 +32,11 @@ create table review (
   constraint fk_course foreign key (course_id) references course (id),
   primary key	(id)
 );
+
+create table course_student(
+  course_id int not null,
+  student_id int not null,
+  primary key(course_id,student_id),
+  constraint fk_course_mm foreign key (course_id) references course(id),
+  constraint fk_student_mm foreign key (student_id) references student(id)
+);

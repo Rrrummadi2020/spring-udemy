@@ -8,6 +8,7 @@ import com.example.firstproject.entity.Course;
 import com.example.firstproject.entity.Instructor;
 import com.example.firstproject.entity.InstructorDetail;
 import com.example.firstproject.entity.Review;
+import com.example.firstproject.entity.Student;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.TypedQuery;
@@ -99,6 +100,22 @@ public class InstructorDAOImpl implements InstructorDAO {
     @Override
     public Course findCourse(Integer id){
         TypedQuery<Course> query = entityManager.createQuery("SELECT i FROM Course i JOIN FETCH i.reviews WHERE i.id=:theID", Course.class);
+        query.setParameter("theID", id);
+        return query.getSingleResult();
+    }
+    
+    @Override
+    public Course findCourseWithStudents(Integer id) {
+        TypedQuery<Course> query = entityManager
+                .createQuery("SELECT i FROM Course i JOIN FETCH i.students WHERE i.id=:theID", Course.class);
+        query.setParameter("theID", id);
+        return query.getSingleResult();
+    }
+
+    @Override
+    public Student findStudentWithCourses(Integer id) {
+        TypedQuery<Student> query = entityManager
+                .createQuery("SELECT i FROM Student i JOIN FETCH i.courses WHERE i.id=:theID", Student.class);
         query.setParameter("theID", id);
         return query.getSingleResult();
     }
