@@ -119,4 +119,10 @@ public class InstructorDAOImpl implements InstructorDAO {
         query.setParameter("theID", id);
         return query.getSingleResult();
     }
+
+    @Override
+    @Transactional
+    public void updateCourse(Course course) {
+        entityManager.merge(course);
+    }
 }

@@ -22,4 +22,5 @@ public interface InstructorDAO {
      Course findCourse(Integer id);
      Course findCourseWithStudents(Integer id);
      Student findStudentWithCourses(Integer id);
+     void updateCourse(Course course);
 }

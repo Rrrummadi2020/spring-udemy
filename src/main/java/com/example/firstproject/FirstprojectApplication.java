@@ -39,8 +39,8 @@ public class FirstprojectApplication {
 	public CommandLineRunner commandLineRunner(String[] args) {
 		return runner -> {
 			System.out.println("Server started in POST 8081 ... " + port+" At: "+java.time.LocalTime.now());
-			// findCourseWithStudents();
-			findStudentWithCourses();
+			findCourseWithStudents();
+			// findStudentWithCourses();
 			//			createStudent();
 //			findStudent(2);
 //			findByName("rama");
@@ -66,6 +66,13 @@ public class FirstprojectApplication {
 		System.out.println("following are the students of the particular course......");
 		System.out.println(course.getStudents());
 		System.out.println("done fetching the course wth list of studets............ ");
+		Student student = new Student("Sairam","IIIterator","sairam@rgukt.com");
+		Student studenttwo = new Student("Amar","Nath","amarnathp@mits.com");
+		course.addStudent(student);
+		course.addStudent(studenttwo);
+		System.out.println("saving course........");
+		instructorDAO.updateCourse(course);
+		System.out.println("done  course saved ........");
 	}
 	
 	private void findStudentWithCourses() {
@@ -187,7 +194,7 @@ public class FirstprojectApplication {
 		Student studentTwo = new Student("Neela","React","neela@gmail.com");
 		course.addStudent(studentOne);
 		course.addStudent(studentTwo);
-		instructorDAO.saveCourse(course);
+		instructorDAO.updateCourse(course);
 	}
 
 	public void deleteCourse() {
