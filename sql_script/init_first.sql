@@ -24,3 +24,11 @@ CREATE TABLE `course` (
   KEY `fk_istructor` (`instructor_id`),
   CONSTRAINT `fk_istructor` FOREIGN KEY (`instructor_id`) REFERENCES `instructor` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+create table review (
+  id int not null auto_increment,
+  description varchar(45) not null,
+  course_id int default null,
+  constraint fk_course foreign key (course_id) references course (id),
+  primary key	(id)
+);

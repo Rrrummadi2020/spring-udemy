@@ -7,6 +7,7 @@ import org.springframework.stereotype.Repository;
 import com.example.firstproject.entity.Course;
 import com.example.firstproject.entity.Instructor;
 import com.example.firstproject.entity.InstructorDetail;
+import com.example.firstproject.entity.Review;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.TypedQuery;
@@ -75,5 +76,30 @@ public class InstructorDAOImpl implements InstructorDAO {
     @Transactional
     public void updateInstructor(Instructor instructor){
         entityManager.merge(instructor);
+    }
+    
+    public Course findOneCourse(Integer id){
+        Course course =  entityManager.find(Course.class,id);
+        return course;
+    }    
+    
+    @Override
+    @Transactional
+    public void saveCourse(Course course) {
+        entityManager.persist(course);
+    }
+    @Override
+    @Transactional
+    public void deleteCourse(Integer id) {
+        // TODO Auto-generated method stub
+        Course course = entityManager.find(Course.class,  id);
+        entityManager.remove(course);
+
+    }
+    @Override
+    public Course findCourse(Integer id){
+        TypedQuery<Course> query = entityManager.createQuery("SELECT i FROM Course i JOIN FETCH i.reviews WHERE i.id=:theID", Course.class);
+        query.setParameter("theID", id);
+        return query.getSingleResult();
     }
 }

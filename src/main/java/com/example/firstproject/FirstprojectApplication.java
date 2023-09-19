@@ -16,6 +16,7 @@ import com.example.firstproject.dao.StudentDAO;
 import com.example.firstproject.entity.Course;
 import com.example.firstproject.entity.Instructor;
 import com.example.firstproject.entity.InstructorDetail;
+import com.example.firstproject.entity.Review;
 import com.example.firstproject.entity.Student;
 
 @SpringBootApplication(scanBasePackages = {"com.example.firstproject", "com.outside.service.impl"})
@@ -44,12 +45,15 @@ public class FirstprojectApplication {
 //			updateStudent();
 			// deleteStudent();
 			// createInstructorDetailsALongWithInstructor();
-			deleteInstructor();
+			// deleteInstructor();
 			// findInstructorDetails();
 			// deleteInstructorDetail();
 			// findInstructor();
 			// findInstructorWithJoinFetch();
 			// updateInstructorExisting();
+			// updateCourse();
+			// deleteCourse();
+			findCourse();
 		};
 	}
 	
@@ -151,7 +155,26 @@ public class FirstprojectApplication {
 		System.out.println("updateing ....");
 		instructorDAO.updateInstructor(instructor);
 		System.out.println("done.....");
-
 	}
 
+	public void updateCourse() {
+		Course course = new Course("Angular the complete Guide", "Microservices with docker kubernates");
+		Review review = new Review("good ");
+		Review review2 = new Review("Bad");
+		course.addReview(review);
+		course.addReview(review2);
+		instructorDAO.saveCourse(course);
+	}
+
+	public void deleteCourse() {
+		System.out.println("deleteing the courses and their review  due to cascade ");
+		instructorDAO.deleteCourse(6);
+	}
+
+	public void findCourse() {
+		System.out.println("fetching the courses and their review due to cascade ");
+	Course course =  instructorDAO.findCourse(5);
+	System.out.println(course.getReviews());
+
+	}
 }
