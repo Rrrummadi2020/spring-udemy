@@ -39,7 +39,7 @@ public class FirstprojectApplication {
 	public CommandLineRunner commandLineRunner(String[] args) {
 		return runner -> {
 			System.out.println("Server started in POST 8081 ... " + port+" At: "+java.time.LocalTime.now());
-			findCourseWithStudents();
+			// findCourseWithStudents();
 			// findStudentWithCourses();
 			//			createStudent();
 //			findStudent(2);
@@ -54,7 +54,7 @@ public class FirstprojectApplication {
 			// findInstructorWithJoinFetch();
 			// updateInstructorExisting();
 			// updateCourse();
-			// deleteCourse();
+			deleteCourse();
 			// findCourse();
 		};
 	}
@@ -130,9 +130,9 @@ public class FirstprojectApplication {
 
 	public void deleteStudent() {
 		System.out.println("deleting id : ");
-		studentDAO.delete(2);
+		studentDAO.delete(10);
 		System.out.println("deleted student with id : ");
-	}
+	}	
 	
 	public void createInstructorDetailsALongWithInstructor() {
 		Instructor tempInstructor = new Instructor("Jonas Schedmntan", "jonasschemetan@gmail.com");
@@ -199,7 +199,7 @@ public class FirstprojectApplication {
 
 	public void deleteCourse() {
 		System.out.println("deleteing the courses and their review  due to cascade ");
-		instructorDAO.deleteCourse(6);
+		instructorDAO.deleteCourse(11);
 	}
 
 	public void findCourse() {
