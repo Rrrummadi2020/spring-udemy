@@ -24,7 +24,7 @@ public class SecurityConfig {
         return new InMemoryUserDetailsManager(nenu,akka,amma);
     } */
 
-    @Bean
+    // @Bean
     public SecurityFilterChain filterChain(HttpSecurity httpSecurity) throws Exception {
         httpSecurity.authorizeHttpRequests(configurer->configurer.requestMatchers(HttpMethod.GET,"/api/engineers").hasRole("EMPLOYEE")
                         .requestMatchers(HttpMethod.GET,"/api/engineers/**").hasRole("EMPLOYEE").
@@ -38,7 +38,7 @@ public class SecurityConfig {
 
     }
     
-    @Bean
+    // @Bean
     public JdbcUserDetailsManager userDetailsManager(DataSource dataSource){
         JdbcUserDetailsManager jdbcUserDetailsManager=  new JdbcUserDetailsManager(dataSource);
         jdbcUserDetailsManager.setUsersByUsernameQuery("SELECT user_id, pw,active FROM members WHERE user_id=?");

@@ -54,7 +54,7 @@ public class FirstprojectApplication {
 			// findInstructorWithJoinFetch();
 			// updateInstructorExisting();
 			// updateCourse();
-			deleteCourse();
+			// deleteCourse();
 			// findCourse();
 		};
 	}
